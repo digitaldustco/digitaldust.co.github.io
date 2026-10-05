@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Digital Dust Co. — A tiny piece of nowhere.</title>
+
+<style>
+* {
+box-sizing: border-box;
+}
+
+body {
+margin: 0;
+background: #f5f2eb;
+color: #1d1d1b;
+font-family: Arial, Helvetica, sans-serif;
+}
+
+.page {
+min-height: 100vh;
+display: flex;
+flex-direction: column;
+}
+
+header {
+padding: 28px 6%;
+display: flex;
+justify-content: space-between;
+align-items: center;
+font-size: 13px;
+letter-spacing: 2px;
+}
+
+.logo {
+font-weight: bold;
+}
+
+.tiny {
+opacity: 0.55;
+}
+
+main {
+flex: 1;
+display: flex;
+align-items: center;
+justify-content: center;
+padding: 50px 6%;
+}
+
+.hero {
+max-width: 900px;
+width: 100%;
+text-align: center;
+}
+
+h1 {
+font-family: Georgia, "Times New Roman", serif;
+font-size: clamp(58px, 12vw, 150px);
+font-weight: normal;
+line-height: 0.88;
+letter-spacing: -5px;
+margin: 0;
+}
+
+.tagline {
+font-family: Georgia, "Times New Roman", serif;
+font-size: clamp(22px, 4vw, 38px);
+margin: 35px 0 15px;
+}
+
+.subtext {
+max-width: 500px;
+margin: 0 auto 35px;
+line-height: 1.6;
+font-size: 16px;
+opacity: 0.7;
+}
+
+.dust {
+height: 180px;
+position: relative;
+overflow: hidden;
+margin: 25px auto 35px;
+max-width: 800px;
+}
+
+.dust span {
+position: absolute;
+width: 2px;
+height: 2px;
+background: #1d1d1b;
+border-radius: 50%;
+opacity: 0.35;
+}
+
+.dust span:nth-child(1) { left: 4%; top: 40%; }
+.dust span:nth-child(2) { left: 9%; top: 62%; width: 3px; height: 3px; }
+.dust span:nth-child(3) { left: 14%; top: 27%; }
+.dust span:nth-child(4) { left: 18%; top: 72%; }
+.dust span:nth-child(5) { left: 23%; top: 48%; width: 4px; height: 4px; opacity: .5; }
+.dust span:nth-child(6) { left: 29%; top: 34%; }
+.dust span:nth-child(7) { left: 33%; top: 68%; }
+.dust span:nth-child(8) { left: 38%; top: 18%; width: 3px; height: 3px; }
+.dust span:nth-child(9) { left: 42%; top: 55%; }
+.dust span:nth-child(10) { left: 47%; top: 38%; width: 5px; height: 5px; opacity: .55; }
+.dust span:nth-child(11) { left: 52%; top: 76%; }
+.dust span:nth-child(12) { left: 57%; top: 24%; }
+.dust span:nth-child(13) { left: 62%; top: 51%; width: 3px; height: 3px; }
+.dust span:nth-child(14) { left: 67%; top: 69%; }
+.dust span:nth-child(15) { left: 71%; top: 32%; width: 4px; height: 4px; opacity: .5; }
+.dust span:nth-child(16) { left: 76%; top: 58%; }
+.dust span:nth-child(17) { left: 81%; top: 21%; }
+.dust span:nth-child(18) { left: 86%; top: 74%; width: 3px; height: 3px; }
+.dust span:nth-child(19) { left: 91%; top: 43%; }
+.dust span:nth-child(20) { left: 96%; top: 63%; width: 4px; height: 4px; opacity: .45; }
+
+.button {
+display: inline-block;
+padding: 18px 32px;
+background: #1d1d1b;
+color: #f5f2eb;
+text-decoration: none;
+font-size: 13px;
+font-weight: bold;
+letter-spacing: 1.5px;
+transition: transform .2s ease, opacity .2s ease;
+}
+
+.button:hover {
+transform: translateY(-2px);
+opacity: .85;
+}
+
+.price {
+margin-top: 15px;
+font-size: 12px;
+opacity: .5;
+}
+
+footer {
+padding: 25px 6%;
+text-align: center;
+font-size: 11px;
+opacity: .45;
+letter-spacing: 1px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="page">
+
+<header>
+<div class="logo">DIGITAL DUST CO.</div>
+<div class="tiny">EST. 2026</div>
+</header>
+
+<main>
+<section class="hero">
+
+<h1>DUST</h1>
+
+<div class="tagline">
+A tiny piece of nowhere.
+</div>
+
+<p class="subtext">
+Somewhere on the internet, there are millions of tiny digital specks.
+Nobody needs one.<br>
+You can have one anyway.
+</p>
+
+<div class="dust">
+<span></span><span></span><span></span><span></span><span></span>
+<span></span><span></span><span></span><span></span><span></span>
+<span></span><span></span><span></span><span></span><span></span>
+<span></span><span></span><span></span><span></span><span></span>
+</div>
+
+<a href="#" class="button">
+CLAIM A SPECK — £1
+</a>
+
+<div class="price">
+No physical dust. No subscription. No nonsense.
+</div>
+
+</section>
+</main>
+
+<footer>
+DIGITAL DUST CO. · A COMPLETELY UNNECESSARY DIGITAL COLLECTIBLE
+</footer>
+
+</div>
+
+</body>
+</html>
