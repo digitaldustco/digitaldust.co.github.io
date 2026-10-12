@@ -62,7 +62,7 @@
         <p class="subtext">Somewhere on the internet, there are millions of tiny digital specks. Nobody needs one.<br>You can have one anyway.</p>
         <div class="dust" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
         <a href="https://buy.stripe.com/eVq3cpbJO12y3ZY3Fz9Ve00" class="button">CLAIM A SPECK — £1</a>
-        <div class="price">No physical dust. No subscription. No nonsense.</div>
+        <div class="price">No physical dust. No subscription. No nonsense. After payment, your tracking code appears on this page. Please save it — it won’t be emailed.</div>
 
         <section class="tracker" aria-labelledby="tracker-title">
           <h2 id="tracker-title">Track Your Dust</h2>
@@ -167,7 +167,7 @@
         history.replaceState({}, "", location.pathname + location.hash);
         input.value = record.code;
         startTimer(record);
-        showMessage("Your dust is on its way. Save this code so you can track it later.");
+        showMessage("Your dust is on its way. Save this code now so you can track it later — it won’t be emailed.");
         input.focus();
       } catch (error) {
         showMessage("Your payment may still be processing. Please wait a moment, then try your tracking code or check your receipt.", true);
