@@ -1,527 +1,180 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Digital Dust Co. — A tiny piece of nowhere.</title>
-
-<style>
-* {
-box-sizing: border-box;
-}
-
-body {
-margin: 0;
-background: #f5f2eb;
-color: #1d1d1b;
-font-family: Arial, Helvetica, sans-serif;
-}
-
-.page {
-min-height: 100vh;
-display: flex;
-flex-direction: column;
-}
-
-header {
-padding: 28px 6%;
-display: flex;
-justify-content: space-between;
-align-items: center;
-font-size: 13px;
-letter-spacing: 2px;
-}
-
-.logo {
-font-weight: bold;
-}
-
-.tiny {
-opacity: 0.55;
-}
-
-main {
-flex: 1;
-padding: 50px 6%;
-}
-
-.hero {
-max-width: 900px;
-width: 100%;
-text-align: center;
-margin: 0 auto;
-}
-
-h1 {
-font-family: Georgia, "Times New Roman", serif;
-font-size: clamp(58px, 12vw, 150px);
-font-weight: normal;
-line-height: 0.88;
-letter-spacing: -5px;
-margin: 0;
-}
-
-.tagline {
-font-family: Georgia, "Times New Roman", serif;
-font-size: clamp(22px, 4vw, 38px);
-margin: 35px 0 15px;
-}
-
-.subtext {
-max-width: 500px;
-margin: 0 auto 35px;
-line-height: 1.6;
-font-size: 16px;
-opacity: 0.7;
-}
-
-.dust {
-height: 180px;
-position: relative;
-overflow: hidden;
-margin: 25px auto 35px;
-max-width: 800px;
-}
-
-.dust span {
-position: absolute;
-width: 2px;
-height: 2px;
-background: #1d1d1b;
-border-radius: 50%;
-opacity: 0.35;
-}
-
-.dust span:nth-child(1) { left: 4%; top: 40%; }
-.dust span:nth-child(2) { left: 9%; top: 62%; width: 3px; height: 3px; }
-.dust span:nth-child(3) { left: 14%; top: 27%; }
-.dust span:nth-child(4) { left: 18%; top: 72%; }
-.dust span:nth-child(5) { left: 23%; top: 48%; width: 4px; height: 4px; opacity: .5; }
-.dust span:nth-child(6) { left: 29%; top: 34%; }
-.dust span:nth-child(7) { left: 33%; top: 68%; }
-.dust span:nth-child(8) { left: 38%; top: 18%; width: 3px; height: 3px; }
-.dust span:nth-child(9) { left: 42%; top: 55%; }
-.dust span:nth-child(10) { left: 47%; top: 38%; width: 5px; height: 5px; opacity: .55; }
-.dust span:nth-child(11) { left: 52%; top: 76%; }
-.dust span:nth-child(12) { left: 57%; top: 24%; }
-.dust span:nth-child(13) { left: 62%; top: 51%; width: 3px; height: 3px; }
-.dust span:nth-child(14) { left: 67%; top: 69%; }
-.dust span:nth-child(15) { left: 71%; top: 32%; width: 4px; height: 4px; opacity: .5; }
-.dust span:nth-child(16) { left: 76%; top: 58%; }
-.dust span:nth-child(17) { left: 81%; top: 21%; }
-.dust span:nth-child(18) { left: 86%; top: 74%; width: 3px; height: 3px; }
-.dust span:nth-child(19) { left: 91%; top: 43%; }
-.dust span:nth-child(20) { left: 96%; top: 63%; width: 4px; height: 4px; opacity: .45; }
-
-.button {
-display: inline-block;
-padding: 18px 32px;
-background: #1d1d1b;
-color: #f5f2eb;
-text-decoration: none;
-font-size: 13px;
-font-weight: bold;
-letter-spacing: 1.5px;
-transition: transform .2s ease, opacity .2s ease;
-border: none;
-cursor: pointer;
-}
-
-.button:hover {
-transform: translateY(-2px);
-opacity: .85;
-}
-
-.price {
-margin-top: 15px;
-font-size: 12px;
-opacity: .5;
-}
-
-
-/* TRACKING */
-
-.tracker {
-max-width: 520px;
-margin: 80px auto 30px;
-padding-top: 60px;
-border-top: 1px solid rgba(29,29,27,.15);
-}
-
-.tracker h2 {
-font-family: Georgia, "Times New Roman", serif;
-font-size: 34px;
-font-weight: normal;
-margin: 0 0 10px;
-}
-
-.tracker p {
-font-size: 14px;
-line-height: 1.6;
-opacity: .65;
-margin-bottom: 25px;
-}
-
-.tracker-form {
-display: flex;
-gap: 10px;
-justify-content: center;
-}
-
-.tracker-input {
-flex: 1;
-min-width: 0;
-padding: 17px;
-border: 1px solid rgba(29,29,27,.25);
-background: transparent;
-font-family: Arial, Helvetica, sans-serif;
-font-size: 14px;
-text-align: center;
-outline: none;
-}
-
-.tracker-input:focus {
-border-color: #1d1d1b;
-}
-
-.tracker-result {
-display: none;
-margin-top: 35px;
-padding: 35px 20px;
-border: 1px solid rgba(29,29,27,.2);
-}
-
-.tracker-result h3 {
-font-family: Georgia, "Times New Roman", serif;
-font-size: 30px;
-font-weight: normal;
-margin: 0 0 20px;
-}
-
-.speck-number {
-font-size: 13px;
-letter-spacing: 2px;
-opacity: .6;
-margin-bottom: 25px;
-}
-
-.owner {
-font-size: 18px;
-margin-bottom: 25px;
-}
-
-.floating-label {
-font-size: 11px;
-letter-spacing: 1.5px;
-opacity: .5;
-text-transform: uppercase;
-margin-bottom: 8px;
-}
-
-.floating-time {
-font-family: Georgia, "Times New Roman", serif;
-font-size: 30px;
-margin-bottom: 25px;
-}
-
-.started {
-font-size: 13px;
-opacity: .6;
-line-height: 1.6;
-}
-
-.tracker-error {
-display: none;
-margin-top: 20px;
-font-size: 13px;
-opacity: .65;
-}
-
-footer {
-padding: 25px 6%;
-text-align: center;
-font-size: 11px;
-opacity: .45;
-letter-spacing: 1px;
-}
-
-@media (max-width: 600px) {
-
-.tracker-form {
-flex-direction: column;
-}
-
-.tracker-input {
-width: 100%;
-}
-
-.tracker-form .button {
-width: 100%;
-}
-
-}
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f2eb">
+  <title>Digital Dust Co. — A tiny piece of nowhere.</title>
+  <style>
+    * { box-sizing: border-box; }
+    :root { color-scheme: light; --paper: #f5f2eb; --ink: #1d1d1b; }
+    body { margin: 0; background: var(--paper); color: var(--ink); font-family: Arial, Helvetica, sans-serif; }
+    .page { min-height: 100vh; display: flex; flex-direction: column; }
+    header { padding: 28px 6%; display: flex; justify-content: space-between; align-items: center; font-size: 13px; letter-spacing: 2px; }
+    .logo { font-weight: bold; }
+    .tiny { opacity: .55; }
+    main { flex: 1; padding: 50px 6%; }
+    .hero { max-width: 900px; width: 100%; text-align: center; margin: 0 auto; }
+    h1 { font-family: Georgia, "Times New Roman", serif; font-size: clamp(58px, 12vw, 150px); font-weight: normal; line-height: .88; letter-spacing: -5px; margin: 0; }
+    .tagline { font-family: Georgia, "Times New Roman", serif; font-size: clamp(22px, 4vw, 38px); margin: 35px 0 15px; }
+    .subtext { max-width: 500px; margin: 0 auto 35px; line-height: 1.6; font-size: 16px; opacity: .7; }
+    .dust { height: 180px; position: relative; overflow: hidden; margin: 25px auto 35px; max-width: 800px; }
+    .dust span { position: absolute; width: 2px; height: 2px; background: var(--ink); border-radius: 50%; opacity: .35; }
+    .dust span:nth-child(1) { left:4%;top:40%; } .dust span:nth-child(2) { left:9%;top:62%;width:3px;height:3px; }
+    .dust span:nth-child(3) { left:14%;top:27%; } .dust span:nth-child(4) { left:18%;top:72%; }
+    .dust span:nth-child(5) { left:23%;top:48%;width:4px;height:4px;opacity:.5; } .dust span:nth-child(6) { left:29%;top:34%; }
+    .dust span:nth-child(7) { left:33%;top:68%; } .dust span:nth-child(8) { left:38%;top:18%;width:3px;height:3px; }
+    .dust span:nth-child(9) { left:42%;top:55%; } .dust span:nth-child(10) { left:47%;top:38%;width:5px;height:5px;opacity:.55; }
+    .dust span:nth-child(11) { left:52%;top:76%; } .dust span:nth-child(12) { left:57%;top:24%; }
+    .dust span:nth-child(13) { left:62%;top:51%;width:3px;height:3px; } .dust span:nth-child(14) { left:67%;top:69%; }
+    .dust span:nth-child(15) { left:71%;top:32%;width:4px;height:4px;opacity:.5; } .dust span:nth-child(16) { left:76%;top:58%; }
+    .dust span:nth-child(17) { left:81%;top:21%; } .dust span:nth-child(18) { left:86%;top:74%;width:3px;height:3px; }
+    .dust span:nth-child(19) { left:91%;top:43%; } .dust span:nth-child(20) { left:96%;top:63%;width:4px;height:4px;opacity:.45; }
+    .button { display: inline-block; padding: 18px 32px; background: var(--ink); color: var(--paper); text-decoration: none; font-size: 13px; font-weight: bold; letter-spacing: 1.5px; transition: transform .2s ease, opacity .2s ease; border: 0; cursor: pointer; }
+    .button:hover { transform: translateY(-2px); opacity: .85; }
+    .button:focus-visible, .tracker-input:focus-visible { outline: 3px solid #8d5c16; outline-offset: 3px; }
+    .price { margin-top: 15px; font-size: 12px; opacity: .5; }
+    .tracker { max-width: 560px; margin: 80px auto 30px; padding-top: 60px; border-top: 1px solid rgba(29,29,27,.15); }
+    .tracker h2 { font-family: Georgia, "Times New Roman", serif; font-size: 34px; font-weight: normal; margin: 0 0 10px; }
+    .tracker p { font-size: 14px; line-height: 1.6; opacity: .7; margin: 0 0 24px; }
+    .tracker-form { display: flex; gap: 10px; justify-content: center; }
+    .tracker-input { flex: 1; min-width: 0; padding: 17px; border: 1px solid rgba(29,29,27,.3); border-radius: 0; background: transparent; font: 14px Arial, Helvetica, sans-serif; text-align: center; text-transform: uppercase; }
+    .tracker-result, .message { display: none; margin-top: 28px; padding: 30px 20px; border: 1px solid rgba(29,29,27,.2); }
+    .tracker-result h3 { font-family: Georgia, "Times New Roman", serif; font-size: 30px; font-weight: normal; margin: 0 0 18px; }
+    .tracking-code { font-size: 13px; letter-spacing: 2px; opacity: .65; overflow-wrap: anywhere; margin-bottom: 22px; }
+    .floating-label { font-size: 11px; letter-spacing: 1.5px; opacity: .55; text-transform: uppercase; margin-bottom: 8px; }
+    .floating-time { font-family: Georgia, "Times New Roman", serif; font-size: clamp(24px, 5vw, 32px); margin-bottom: 20px; font-variant-numeric: tabular-nums; }
+    .started, .fine-print { font-size: 12px; opacity: .6; line-height: 1.6; }
+    .message { border: 0; padding: 0; font-size: 13px; line-height: 1.6; opacity: .75; }
+    .message.error { color: #8c241d; opacity: 1; }
+    footer { padding: 25px 6%; text-align: center; font-size: 11px; opacity: .45; letter-spacing: 1px; }
+    @media (max-width: 600px) { .tracker-form { flex-direction: column; } .tracker-form .button { width: 100%; } }
+    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; } }
+  </style>
 </head>
-
 <body>
-
-<div class="page">
-
-<header>
-<div class="logo">DIGITAL DUST CO.</div>
-<div class="tiny">EST. 2026</div>
-</header>
-
-<main>
-
-<section class="hero">
-
-<h1>DUST</h1>
-
-<div class="tagline">
-A tiny piece of nowhere.
-</div>
-
-<p class="subtext">
-Somewhere on the internet, there are millions of tiny digital specks.
-Nobody needs one.<br>
-You can have one anyway.
-</p>
-
-<div class="dust">
-<span></span><span></span><span></span><span></span><span></span>
-<span></span><span></span><span></span><span></span><span></span>
-<span></span><span></span><span></span><span></span><span></span>
-<span></span><span></span><span></span><span></span><span></span>
-</div>
-
-<a href="#" class="button">
-CLAIM A SPECK — £1
-</a>
-
-<div class="price">
-No physical dust. No subscription. No nonsense.
-</div>
-
-
-<!-- TRACK YOUR SPECK -->
-
-<section class="tracker">
-
-<h2>Track Your Speck</h2>
-
-<p>
-Enter your Speck Number to see how long your dust has been floating.
-</p>
-
-<div class="tracker-form">
-
-<input
-type="text"
-id="speckNumber"
-class="tracker-input"
-placeholder="e.g. DD-000123"
-autocomplete="off"
->
-
-<button
-class="button"
-onclick="trackSpeck()">
-TRACK
-</button>
-
-</div>
-
-<div id="trackerError" class="tracker-error">
-We couldn't find that Speck Number. Please check it and try again.
-</div>
-
-<div id="trackerResult" class="tracker-result">
-
-<h3>Your dust is floating...</h3>
-
-<div class="speck-number" id="resultSpeckNumber"></div>
-
-<div class="owner" id="resultOwner"></div>
-
-<div class="floating-label">
-Floating for
-</div>
-
-<div class="floating-time" id="floatingTime">
-0 days, 0 hours, 0 minutes
-</div>
-
-<div class="started" id="startedTime"></div>
-
-</div>
-
-</section>
-
-</section>
-
-</main>
-
-<footer>
-DIGITAL DUST CO. · A COMPLETELY UNNECESSARY DIGITAL COLLECTIBLE
-</footer>
-
-</div>
-
-
-<script>
-
-/*
-========================================================
-DIGITAL DUST TRACKING
-========================================================
-
-WE WILL ADD YOUR GOOGLE SHEET CONNECTION HERE.
-
-For now this is left as a placeholder.
-
-Once your Google Apps Script is ready,
-replace the URL below with your Web App URL.
-*/
-
-const TRACKING_URL = "YOUR_GOOGLE_APPS_SCRIPT_URL_HERE";
-
-
-async function trackSpeck() {
-
-const input = document
-.getElementById("speckNumber")
-.value
-.trim()
-.toUpperCase();
-
-const error = document.getElementById("trackerError");
-const result = document.getElementById("trackerResult");
-
-error.style.display = "none";
-result.style.display = "none";
-
-if (!input) {
-error.textContent = "Please enter your Speck Number.";
-error.style.display = "block";
-return;
-}
-
-try {
-
-const response = await fetch(
-TRACKING_URL + "?speck=" + encodeURIComponent(input)
-);
-
-const data = await response.json();
-
-if (!data.found) {
-
-error.textContent =
-"We couldn't find that Speck Number. Please check it and try again.";
-
-error.style.display = "block";
-return;
-
-}
-
-
-/* Show customer information */
-
-document.getElementById("resultSpeckNumber").textContent =
-data.speckNumber;
-
-document.getElementById("resultOwner").textContent =
-data.customerName;
-
-
-/* Store the original floating time */
-
-const startTime = new Date(data.claimDate).getTime();
-
-
-/* Show the result */
-
-result.style.display = "block";
-
-
-/* Start the live timer */
-
-function updateTimer() {
-
-const now = Date.now();
-
-let difference = now - startTime;
-
-if (difference < 0) {
-difference = 0;
-}
-
-const totalSeconds =
-Math.floor(difference / 1000);
-
-const days =
-Math.floor(totalSeconds / 86400);
-
-const hours =
-Math.floor((totalSeconds % 86400) / 3600);
-
-const minutes =
-Math.floor((totalSeconds % 3600) / 60);
-
-const seconds =
-totalSeconds % 60;
-
-
-document.getElementById("floatingTime").textContent =
-days + " days, " +
-hours + " hours, " +
-minutes + " minutes, " +
-seconds + " seconds";
-
-document.getElementById("startedTime").textContent =
-"Floating since " +
-new Date(startTime).toLocaleString(
-"en-GB",
-{
-dateStyle: "long",
-timeStyle: "short"
-}
-);
-
-}
-
-
-/* Update immediately */
-
-updateTimer();
-
-
-/* Update every second */
-
-if (window.dustTimer) {
-clearInterval(window.dustTimer);
-}
-
-window.dustTimer =
-setInterval(updateTimer, 1000);
-
-}
-catch (errorObject) {
-
-console.error(errorObject);
-
-error.textContent =
-"Something went wrong. Please try again.";
-
-error.style.display = "block";
-
-}
-
-}
-
-</script>
-
+  <div class="page">
+    <header><div class="logo">DIGITAL DUST CO.</div><div class="tiny">EST. 2026</div></header>
+    <main>
+      <section class="hero" aria-labelledby="page-title">
+        <h1 id="page-title">DUST</h1>
+        <div class="tagline">A tiny piece of nowhere.</div>
+        <p class="subtext">Somewhere on the internet, there are millions of tiny digital specks. Nobody needs one.<br>You can have one anyway.</p>
+        <div class="dust" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+        <a href="https://buy.stripe.com/eVq3cpbJO12y3ZY3Fz9Ve00" class="button">CLAIM A SPECK — £1</a>
+        <div class="price">No physical dust. No subscription. No nonsense.</div>
+
+        <section class="tracker" aria-labelledby="tracker-title">
+          <h2 id="tracker-title">Track Your Dust</h2>
+          <p>Enter your DUST-Tracking code to see how long your speck has been travelling. The timer starts at purchase; it’s a playful measure, not an actual trace of an internet route.</p>
+          <form class="tracker-form" id="trackerForm">
+            <label class="sr-only" for="trackingCode" style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0">DUST-Tracking code</label>
+            <input id="trackingCode" class="tracker-input" type="text" placeholder="DUST-Tracking-XXXXXXXXXX" autocomplete="off" autocapitalize="characters" spellcheck="false" required>
+            <button class="button" id="trackButton" type="submit">TRACK</button>
+          </form>
+          <p id="trackerMessage" class="message" role="status" aria-live="polite"></p>
+          <div id="trackerResult" class="tracker-result" aria-live="polite">
+            <h3>Your dust is floating…</h3>
+            <div id="resultCode" class="tracking-code"></div>
+            <div class="floating-label">Travelling for</div>
+            <div id="floatingTime" class="floating-time">—</div>
+            <div id="startedTime" class="started"></div>
+          </div>
+          <p class="fine-print">Your tracking page shows the purchase time only. It never displays your name or payment details.</p>
+        </section>
+      </section>
+    </main>
+    <footer>DIGITAL DUST CO. · A COMPLETELY UNNECESSARY DIGITAL COLLECTIBLE</footer>
+  </div>
+  <script>
+    // Set this to the deployed Worker URL during setup.
+    const TRACKING_API = "https://digitaldust-tracking.maryjaneventola.workers.dev";
+    const form = document.getElementById("trackerForm");
+    const input = document.getElementById("trackingCode");
+    const button = document.getElementById("trackButton");
+    const message = document.getElementById("trackerMessage");
+    const result = document.getElementById("trackerResult");
+    let timerId;
+
+    function showMessage(text, isError = false) {
+      message.textContent = text;
+      message.className = isError ? "message error" : "message";
+      message.style.display = "block";
+    }
+
+    function startTimer(record) {
+      const started = Date.parse(record.startedAt);
+      if (!Number.isFinite(started)) throw new Error("Invalid purchase date");
+      document.getElementById("resultCode").textContent = record.code;
+      document.getElementById("startedTime").textContent = "Floating since " + new Date(started).toLocaleString("en-GB", { dateStyle: "long", timeStyle: "short", timeZone: "UTC" }) + " UTC";
+      result.style.display = "block";
+      const tick = () => {
+        const seconds = Math.max(0, Math.floor((Date.now() - started) / 1000));
+        const days = Math.floor(seconds / 86400);
+        const hours = Math.floor((seconds % 86400) / 3600);
+        const minutes = Math.floor((seconds % 3600) / 60);
+        const remainder = seconds % 60;
+        document.getElementById("floatingTime").textContent = `${days} days, ${hours} hours, ${minutes} minutes, ${remainder} seconds`;
+      };
+      tick();
+      clearInterval(timerId);
+      timerId = setInterval(tick, 1000);
+    }
+
+    async function requestRecord(url) {
+      const response = await fetch(url, { headers: { "Accept": "application/json" }, cache: "no-store" });
+      const data = await response.json().catch(() => ({}));
+      if (!response.ok) throw new Error(data.error || "We couldn't find that tracking code. Check it and try again.");
+      return data;
+    }
+
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      message.style.display = "none";
+      result.style.display = "none";
+      const code = input.value.trim().toUpperCase();
+      if (!code) return showMessage("Please enter your DUST-Tracking code.", true);
+      if (TRACKING_API.includes("YOUR-WORKER")) return showMessage("Tracking is being connected. Please try again soon.", true);
+      button.disabled = true;
+      button.textContent = "SEARCHING…";
+      try {
+        const record = await requestRecord(`${TRACKING_API}/api/track?code=${encodeURIComponent(code)}`);
+        startTimer(record);
+      } catch (error) {
+        showMessage(error.message || "Something went wrong. Please try again.", true);
+      } finally {
+        button.disabled = false;
+        button.textContent = "TRACK";
+      }
+    });
+
+    async function showPurchasedCode() {
+      const params = new URLSearchParams(location.search);
+      const sessionId = params.get("session_id");
+      if (!sessionId || TRACKING_API.includes("YOUR-WORKER")) return;
+      showMessage("Your purchase is confirmed. Finding your tracking code…");
+      try {
+        let record;
+        for (let attempt = 0; attempt < 8; attempt++) {
+          try {
+            record = await requestRecord(`${TRACKING_API}/api/receipt?session_id=${encodeURIComponent(sessionId)}`);
+            break;
+          } catch (error) {
+            if (attempt === 7) throw error;
+            await new Promise((resolve) => setTimeout(resolve, 1250));
+          }
+        }
+        history.replaceState({}, "", location.pathname + location.hash);
+        input.value = record.code;
+        startTimer(record);
+        showMessage("Your dust is on its way. Save this code so you can track it later.");
+        input.focus();
+      } catch (error) {
+        showMessage("Your payment may still be processing. Please wait a moment, then try your tracking code or check your receipt.", true);
+      }
+    }
+
+    showPurchasedCode();
+  </script>
 </body>
 </html>
